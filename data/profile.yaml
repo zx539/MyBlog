@@ -3,10 +3,9 @@ role: AI Agent 开发者 / 全栈开发 / 架构设计
 tagline: 用工程化方式构建可靠、有趣、可协作的智能体系统。
 location: 克拉玛依市 / 东北大学秦皇岛分校
 email: 202412724@stu.neuq.edu.cn
-phone: "18999522993"
-avatar: /images/profile.jpg
-resume: /files/resume.pdf
-template: /images/template.jpg
+avatar: images/profile.jpg
+resume: files/resume.pdf
+template: images/template.jpg
 highlights:
   - AI Agent 开发
   - 大模型 API 与提示词工程

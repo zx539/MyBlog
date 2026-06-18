@@ -1,0 +1,12 @@
+- name: GitHub
+  url: https://github.com/zx539
+  description: 我的代码仓库与项目记录。
+  tag: Code
+- name: 东北大学秦皇岛分校
+  url: https://www.neuq.edu.cn/
+  description: 学习与项目成长的地方。
+  tag: Campus
+- name: Hugo
+  url: https://gohugo.io/
+  description: 本站使用的静态网站生成器。
+  tag: Site

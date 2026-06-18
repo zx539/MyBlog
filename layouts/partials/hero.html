@@ -10,7 +10,7 @@
     <div class="template-board__grid">
       <aside class="template-profile-card">
         <div class="template-avatar">
-          <img src="{{ $profile.avatar }}" alt="{{ $profile.name }} 的照片">
+          <img src="{{ $profile.avatar | relURL }}" alt="{{ $profile.name }} 的照片">
         </div>
         <div class="template-nameplate">
           <p>Hello, I am</p>
@@ -24,7 +24,7 @@
         <h2>{{ $profile.tagline }}</h2>
         <p>记录 AI Agent、大模型应用、编程语言工具链、系统软件和项目复盘。</p>
         <div class="hero-actions">
-          <a class="button primary" href="{{ "/posts/" | relURL }}">看博客</a>
+          <a class="button primary" href="{{ "posts/" | relURL }}">看博客</a>
           <button class="button ghost" type="button" data-resume-open>查看简历</button>
         </div>
       </div>
@@ -32,7 +32,6 @@
       <div class="template-mini-card template-contact-card">
         <p class="eyebrow">Contact</p>
         <a href="mailto:{{ $profile.email }}">{{ $profile.email }}</a>
-        <span>{{ $profile.phone }}</span>
       </div>
 
       <div class="template-mini-card template-skill-card">

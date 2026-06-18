@@ -1,1 +1,29 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"><url><loc>https://zx539.github.io/MyBlog/tags/ai-agent/</loc><lastmod>2026-06-18T00:00:00+00:00</lastmod></url><url><loc>https://zx539.github.io/MyBlog/tags/</loc><lastmod>2026-06-18T00:00:00+00:00</lastmod></url><url><loc>https://zx539.github.io/MyBlog/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc><lastmod>2026-06-18T00:00:00+00:00</lastmod></url><url><loc>https://zx539.github.io/MyBlog/posts/</loc><lastmod>2026-06-18T00:00:00+00:00</lastmod></url><url><loc>https://zx539.github.io/MyBlog/posts/hello-agent/</loc><lastmod>2026-06-18T00:00:00+00:00</lastmod></url><url><loc>https://zx539.github.io/MyBlog/</loc><lastmod>2026-06-18T00:00:00+00:00</lastmod></url><url><loc>https://zx539.github.io/MyBlog/categories/</loc></url><url><loc>https://zx539.github.io/MyBlog/about/</loc></url><url><loc>https://zx539.github.io/MyBlog/resume/</loc></url></urlset>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>http://localhost:1313/MyBlog/tags/ai-agent/</loc>
+    <lastmod>2026-06-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/MyBlog/tags/</loc>
+    <lastmod>2026-06-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/MyBlog/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2026-06-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/MyBlog/posts/</loc>
+    <lastmod>2026-06-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/MyBlog/posts/hello-agent/</loc>
+    <lastmod>2026-06-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/MyBlog/</loc>
+    <lastmod>2026-06-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/MyBlog/categories/</loc>
+  </url><url>
+    <loc>http://localhost:1313/MyBlog/about/</loc>
+  </url><url>
+    <loc>http://localhost:1313/MyBlog/resume/</loc>
+  </url>
+</urlset>
