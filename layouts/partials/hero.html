@@ -1,22 +1,54 @@
 {{ $profile := site.Data.profile }}
-<section class="hero section">
-  <div class="hero-copy">
-    <p class="eyebrow">AI Agent / Systems / Creative Coding</p>
-    <h1>{{ $profile.name }}</h1>
-    <h2>{{ $profile.role }}</h2>
-    <p>{{ $profile.tagline }}</p>
-    <div class="hero-actions">
-      <a class="button primary" href="{{ "/posts/" | relURL }}">看博客</a>
-      <button class="button ghost" type="button" data-resume-open>查看简历</button>
+<section class="template-hero section" aria-label="个人主页首屏">
+  <div class="template-board">
+    <div class="template-board__topbar">
+      <span>Portfolio</span>
+      <span>AI Agent Developer</span>
+      <span>NEUQ</span>
     </div>
-  </div>
-  <div class="hero-art" aria-label="个人卡通风格信息卡">
-    <div class="portrait-frame">
-      <img src="{{ $profile.avatar }}" alt="{{ $profile.name }} 的照片">
+
+    <div class="template-board__grid">
+      <aside class="template-profile-card">
+        <div class="template-avatar">
+          <img src="{{ $profile.avatar }}" alt="{{ $profile.name }} 的照片">
+        </div>
+        <div class="template-nameplate">
+          <p>Hello, I am</p>
+          <h1>{{ $profile.name }}</h1>
+          <span>{{ $profile.role }}</span>
+        </div>
+      </aside>
+
+      <div class="template-main-card">
+        <p class="eyebrow">Personal Blog</p>
+        <h2>{{ $profile.tagline }}</h2>
+        <p>记录 AI Agent、大模型应用、编程语言工具链、系统软件和项目复盘。</p>
+        <div class="hero-actions">
+          <a class="button primary" href="{{ "/posts/" | relURL }}">看博客</a>
+          <button class="button ghost" type="button" data-resume-open>查看简历</button>
+        </div>
+      </div>
+
+      <div class="template-mini-card template-contact-card">
+        <p class="eyebrow">Contact</p>
+        <a href="mailto:{{ $profile.email }}">{{ $profile.email }}</a>
+        <span>{{ $profile.phone }}</span>
+      </div>
+
+      <div class="template-mini-card template-skill-card">
+        <p class="eyebrow">Focus</p>
+        <div class="template-tags">
+          {{ range first 5 $profile.highlights }}
+            <span>{{ . }}</span>
+          {{ end }}
+        </div>
+      </div>
+
+      <div class="template-mini-card template-education-card">
+        <p class="eyebrow">Education</p>
+        <strong>{{ $profile.education.school }}</strong>
+        <span>{{ $profile.education.major }} · {{ $profile.education.period }}</span>
+      </div>
     </div>
-    <div class="template-strip">
-      <img src="{{ $profile.template }}" alt="模板样式参考">
-    </div>
-    <div class="hero-badge">Agent Builder</div>
   </div>
 </section>
