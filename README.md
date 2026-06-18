@@ -25,5 +25,6 @@ hugo new posts/my-new-post.md
 
 1. 把 `hugo.toml` 里的 `baseURL` 改成你的 GitHub Pages 地址。
 2. 推送到 GitHub 仓库。
-3. 在仓库 `Settings -> Pages` 里选择 `GitHub Actions`。
-4. 工作流会自动构建并发布 `public/`。
+3. 等待 Actions 生成 `gh-pages` 分支。
+4. 在仓库 `Settings -> Pages` 里选择 `Deploy from a branch`。
+5. 分支选择 `gh-pages`，目录选择 `/ (root)`。

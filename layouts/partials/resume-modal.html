@@ -1,0 +1,42 @@
+<dialog class="resume-dialog" aria-labelledby="resume-dialog-title" data-resume-dialog>
+  <div class="resume-dialog__chrome">
+    <div>
+      <p class="eyebrow">Resume</p>
+      <h2 id="resume-dialog-title">个人简历</h2>
+    </div>
+    <button class="resume-dialog__close" type="button" aria-label="关闭简历" data-resume-close>×</button>
+  </div>
+  <div class="resume-dialog__body article-body">
+    {{ readFile "assert/个人简历.md" | markdownify }}
+  </div>
+</dialog>
+
+<script>
+  (() => {
+    const dialog = document.querySelector("[data-resume-dialog]");
+    const openers = document.querySelectorAll("[data-resume-open]");
+    const closers = document.querySelectorAll("[data-resume-close]");
+
+    if (!dialog) return;
+
+    openers.forEach((button) => {
+      button.addEventListener("click", () => {
+        if (typeof dialog.showModal === "function") {
+          dialog.showModal();
+        } else {
+          dialog.setAttribute("open", "");
+        }
+      });
+    });
+
+    closers.forEach((button) => {
+      button.addEventListener("click", () => dialog.close());
+    });
+
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) {
+        dialog.close();
+      }
+    });
+  })();
+</script>

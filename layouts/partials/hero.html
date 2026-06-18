@@ -7,7 +7,7 @@
     <p>{{ $profile.tagline }}</p>
     <div class="hero-actions">
       <a class="button primary" href="{{ "/posts/" | relURL }}">看博客</a>
-      <a class="button ghost" href="{{ $profile.resume }}">下载简历</a>
+      <button class="button ghost" type="button" data-resume-open>查看简历</button>
     </div>
   </div>
   <div class="hero-art" aria-label="个人卡通风格信息卡">
