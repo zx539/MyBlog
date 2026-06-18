@@ -1,0 +1,12 @@
+{{ $profile := site.Data.profile }}
+<section class="section">
+  <div class="section-title">
+    <p class="eyebrow">Skills</p>
+    <h2>技能模块</h2>
+  </div>
+  <div class="skill-cloud">
+    {{ range $profile.skills }}
+      <span>{{ . }}</span>
+    {{ end }}
+  </div>
+</section>

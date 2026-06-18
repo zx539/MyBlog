@@ -1,0 +1,19 @@
+<section class="section">
+  <div class="section-title">
+    <p class="eyebrow">Writing</p>
+    <h2>最近文章</h2>
+  </div>
+  <div class="post-grid">
+    {{ range first 3 (where site.RegularPages "Section" "posts").ByDate.Reverse }}
+      <article class="post-card">
+        <a href="{{ .RelPermalink }}">
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+          <h3>{{ .Title }}</h3>
+          {{ with .Params.summary }}<p>{{ . }}</p>{{ end }}
+        </a>
+      </article>
+    {{ else }}
+      <p>还没有文章。</p>
+    {{ end }}
+  </div>
+</section>

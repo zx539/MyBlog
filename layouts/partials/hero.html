@@ -1,0 +1,22 @@
+{{ $profile := site.Data.profile }}
+<section class="hero section">
+  <div class="hero-copy">
+    <p class="eyebrow">AI Agent / Systems / Creative Coding</p>
+    <h1>{{ $profile.name }}</h1>
+    <h2>{{ $profile.role }}</h2>
+    <p>{{ $profile.tagline }}</p>
+    <div class="hero-actions">
+      <a class="button primary" href="{{ "/posts/" | relURL }}">看博客</a>
+      <a class="button ghost" href="{{ $profile.resume }}">下载简历</a>
+    </div>
+  </div>
+  <div class="hero-art" aria-label="个人卡通风格信息卡">
+    <div class="portrait-frame">
+      <img src="{{ $profile.avatar }}" alt="{{ $profile.name }} 的照片">
+    </div>
+    <div class="template-strip">
+      <img src="{{ $profile.template }}" alt="模板样式参考">
+    </div>
+    <div class="hero-badge">Agent Builder</div>
+  </div>
+</section>

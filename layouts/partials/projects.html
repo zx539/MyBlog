@@ -1,0 +1,24 @@
+{{ $profile := site.Data.profile }}
+<section class="section">
+  <div class="section-title">
+    <p class="eyebrow">Projects</p>
+    <h2>项目经历</h2>
+  </div>
+  <div class="project-list">
+    {{ range $profile.projects }}
+      <article class="project-card">
+        <div>
+          <time>{{ .period }}</time>
+          <h3>{{ .title }}</h3>
+          <p class="project-role">{{ .role }}</p>
+          <p>{{ .summary }}</p>
+        </div>
+        <ul>
+          {{ range .outcomes }}
+            <li>{{ . }}</li>
+          {{ end }}
+        </ul>
+      </article>
+    {{ end }}
+  </div>
+</section>

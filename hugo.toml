@@ -1,0 +1,18 @@
+baseURL = "https://zx539.github.io/MyBlog"
+languageCode = "zh-CN"
+title = "张迅 | AI Agent 开发者"
+theme = ""
+
+[params]
+  description = "张迅的个人博客与作品集，记录 AI Agent、系统软件、编程语言与校园项目实践。"
+  author = "张迅"
+  github = "https://github.com/zx539"
+  email = "202412724@stu.neuq.edu.cn"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[outputs]
+  home = ["HTML", "RSS"]
