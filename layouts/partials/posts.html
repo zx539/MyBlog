@@ -16,7 +16,7 @@
             <span>{{ .ReadingTime }} min</span>
           </div>
           <h3>{{ .Title }}</h3>
-          {{ with .Params.summary }}<p>{{ . }}</p>{{ end }}
+          {{ with .Params.summary }}<div class="post-card__summary">{{ . | markdownify }}</div>{{ end }}
           {{ with .Params.tags }}<div class="post-card__tags">{{ range first 2 . }}<span>#{{ . }}</span>{{ end }}</div>{{ end }}
         </a>
       </article>

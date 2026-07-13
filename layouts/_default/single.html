@@ -1,16 +1,28 @@
 {{ define "main" }}
   <div class="article-shell section">
-    <a class="back-link" href="{{ cond (eq .Section "posts") ("posts/" | relURL) (site.Home.RelPermalink) }}">← 返回{{ if eq .Section "posts" }}文章列表{{ else }}首页{{ end }}</a>
+    <div class="article-toolbar">
+      <a class="back-link back-link--surface" href="{{ cond (eq .Section "posts") ("posts/" | relURL) (site.Home.RelPermalink) }}">← 返回{{ if eq .Section "posts" }}文章列表{{ else }}首页{{ end }}</a>
+      {{ if eq .Section "posts" }}
+        <div class="article-toolbar__meta">
+          {{ if .Date }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>{{ end }}
+          <span>{{ .ReadingTime }} 分钟阅读</span>
+          <span>{{ .WordCount }} 字</span>
+        </div>
+      {{ end }}
+    </div>
 
     <article class="article">
       <header class="article-header">
         <p class="eyebrow">{{ if eq .Section "posts" }}読みもの · Writing{{ else }}{{ .Section | default "Page" }}{{ end }}</p>
         <h1>{{ .Title }}</h1>
-        {{ with .Params.summary }}<p class="article-deck">{{ . }}</p>{{ end }}
-        <div class="article-meta">
-          {{ if .Date }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>{{ end }}
-          {{ if eq .Section "posts" }}<span>{{ .ReadingTime }} 分钟阅读</span><span>{{ .WordCount }} 字</span>{{ end }}
-        </div>
+        {{ with .Params.summary }}<div class="article-deck">{{ . | markdownify }}</div>{{ end }}
+        {{ if eq .Section "posts" }}
+          <div class="article-meta">
+            {{ if .Date }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>{{ end }}
+            <span>{{ .ReadingTime }} 分钟阅读</span>
+            <span>{{ .WordCount }} 字</span>
+          </div>
+        {{ end }}
         {{ with .Params.tags }}
           <div class="article-tags" aria-label="文章标签">
             {{ range . }}<span># {{ . }}</span>{{ end }}

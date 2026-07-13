@@ -1,22 +1,32 @@
 {{ define "main" }}
-  <section class="section page-heading manga-heading">
-    <p class="eyebrow">読みもの · Blog</p>
-    <h1>{{ .Title }}</h1>
-    {{ with .Description }}<p>{{ . }}</p>{{ end }}
+  {{ $posts := .Pages.ByDate.Reverse }}
+  <section class="section blog-heading manga-heading">
+    <a class="back-link back-link--surface" href="{{ site.Home.RelPermalink }}">← 返回首页</a>
+    <div class="blog-heading__copy">
+      <p class="eyebrow">読みもの · Blog</p>
+      <h1>{{ .Title }}</h1>
+      {{ with .Description }}<p>{{ . }}</p>{{ end }}
+    </div>
+    <div class="blog-heading__meta" aria-label="博客统计">
+      <span><strong>{{ len $posts }}</strong> 篇文章</span>
+      <span><strong>{{ now.Format "2006" }}</strong> 年度记录</span>
+    </div>
   </section>
 
-  <section class="section post-grid" aria-label="文章列表">
+  <section class="section blog-archive" aria-label="文章列表">
     {{ range .Pages.ByDate.Reverse }}
-      <article class="post-card">
-        <a href="{{ .RelPermalink }}">
-          <div class="post-card__meta">
-            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+      <article class="archive-entry">
+        <time class="archive-entry__date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+        <div class="archive-entry__body">
+          <div class="archive-entry__meta">
             <span>{{ .ReadingTime }} min</span>
+            <span>{{ .WordCount }} 字</span>
           </div>
-          <h2>{{ .Title }}</h2>
-          {{ with .Params.summary }}<p>{{ . }}</p>{{ end }}
-          {{ with .Params.tags }}<div class="post-card__tags">{{ range first 2 . }}<span>#{{ . }}</span>{{ end }}</div>{{ end }}
-        </a>
+          <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          {{ with .Params.summary }}<div class="archive-entry__summary">{{ . | markdownify }}</div>{{ end }}
+          {{ with .Params.tags }}<div class="archive-entry__tags">{{ range . }}<span>#{{ . }}</span>{{ end }}</div>{{ end }}
+        </div>
+        <a class="archive-entry__link" href="{{ .RelPermalink }}">阅读全文</a>
       </article>
     {{ end }}
   </section>
