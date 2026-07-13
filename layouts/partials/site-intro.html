@@ -1,0 +1,23 @@
+<div class="sakura-intro" data-sakura-intro aria-hidden="true">
+  <div class="sakura-intro__petals">
+    {{ range seq 1 20 }}<i style="--intro-petal: {{ . }}"></i>{{ end }}
+  </div>
+  <div class="sakura-intro__title">
+    <span>KAZAMA YUIKA</span>
+    <strong>風間惟花</strong>
+    <i></i>
+    <small>SAKURA JOURNAL</small>
+  </div>
+</div>
+<script>
+  (() => {
+    const intro = document.querySelector("[data-sakura-intro]");
+    if (!intro) return;
+
+    const remove = () => intro.remove();
+    intro.addEventListener("animationend", (event) => {
+      if (event.target === intro) remove();
+    });
+    window.setTimeout(remove, 2600);
+  })();
+</script>

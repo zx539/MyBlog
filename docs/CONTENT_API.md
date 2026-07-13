@@ -246,6 +246,8 @@ draft: false
 
 修改颜色优先调整变量，不要逐个替换组件颜色。所有方框使用 `--corner` 作为圆角。首页模板样式位于 `/* Sakura dashboard home */` 注释之后。
 
+首页遮罩动画由 `layouts/partials/site-intro.html` 提供，对应样式名称为 `.sakura-intro`。全页和封面樱花数量分别在 `layouts/index.html` 与 `layouts/partials/hero.html` 的 `seq` 数值中调整。动画必须同步保留 `prefers-reduced-motion` 规则。
+
 ## 8. 本地验证接口
 
 开发预览：
