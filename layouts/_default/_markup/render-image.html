@@ -1,0 +1,15 @@
+{{- $destination := .Destination -}}
+{{- $external := or (strings.HasPrefix $destination "http://") (strings.HasPrefix $destination "https://") -}}
+{{- if not $external -}}
+  {{- $destination = $destination | relURL -}}
+{{- end -}}
+<figure class="md-figure">
+  <img src="{{ $destination | safeURL }}" alt="{{ .Text }}" loading="lazy" decoding="async">
+  {{- with .Title }}
+    <figcaption>{{ . }}</figcaption>
+  {{- else }}
+    {{- if .Text }}
+      <figcaption>{{ .Text }}</figcaption>
+    {{- end }}
+  {{- end }}
+</figure>

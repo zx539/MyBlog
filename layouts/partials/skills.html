@@ -1,12 +1,15 @@
 {{ $profile := site.Data.profile }}
-<section class="section">
-  <div class="section-title">
-    <p class="eyebrow">Skills</p>
-    <h2>技能模块</h2>
-  </div>
+<section class="section editorial-section skills-section">
+  <header class="chapter-heading">
+    <span>02</span>
+    <div>
+      <p class="eyebrow">得意分野 · Skills</p>
+      <h2>技能与工具箱</h2>
+    </div>
+  </header>
   <div class="skill-cloud">
-    {{ range $profile.skills }}
-      <span>{{ . }}</span>
+    {{ range $index, $skill := $profile.skills }}
+      <span><small>{{ printf "%02d" (add $index 1) }}</small>{{ $skill }}</span>
     {{ end }}
   </div>
 </section>

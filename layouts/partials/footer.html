@@ -1,4 +1,10 @@
 <footer class="site-footer">
-  <p>© {{ now.Format "2006" }} {{ site.Params.author }}. Built with Hugo.</p>
-  <a href="mailto:{{ site.Params.email }}">联系我</a>
+  <div>
+    <strong>{{ site.Params.author }}</strong>
+    <p>© {{ now.Format "2006" }} · Built with Hugo</p>
+  </div>
+  <div class="footer-links">
+    <a href="{{ site.Params.github }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="mailto:{{ site.Params.email }}">Mail</a>
+  </div>
 </footer>

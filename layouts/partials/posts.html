@@ -1,15 +1,23 @@
-<section class="section">
-  <div class="section-title">
-    <p class="eyebrow">Writing</p>
-    <h2>最近文章</h2>
-  </div>
+<section class="section editorial-section posts-section">
+  <header class="chapter-heading">
+    <span>04</span>
+    <div>
+      <p class="eyebrow">読みもの · Writing</p>
+      <h2>最近文章</h2>
+    </div>
+    <a class="section-link" href="{{ "posts/" | relURL }}">全部文章 →</a>
+  </header>
   <div class="post-grid">
     {{ range first 3 (where site.RegularPages "Section" "posts").ByDate.Reverse }}
       <article class="post-card">
         <a href="{{ .RelPermalink }}">
-          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+          <div class="post-card__meta">
+            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+            <span>{{ .ReadingTime }} min</span>
+          </div>
           <h3>{{ .Title }}</h3>
           {{ with .Params.summary }}<p>{{ . }}</p>{{ end }}
+          {{ with .Params.tags }}<div class="post-card__tags">{{ range first 2 . }}<span>#{{ . }}</span>{{ end }}</div>{{ end }}
         </a>
       </article>
     {{ else }}

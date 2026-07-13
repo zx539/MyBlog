@@ -1,53 +1,63 @@
 {{ $profile := site.Data.profile }}
-<section class="template-hero section" aria-label="个人主页首屏">
-  <div class="template-board">
-    <div class="template-board__topbar">
-      <span>Portfolio</span>
-      <span>AI Agent Developer</span>
-      <span>NEUQ</span>
+<section class="anime-hero section" aria-label="个人主页首屏">
+  <div class="anime-hero__backdrop" aria-hidden="true">
+    <img src="{{ $profile.hero_art | relURL }}" alt="">
+  </div>
+  <div class="anime-hero__veil" aria-hidden="true"></div>
+  <div class="hero-petals" aria-hidden="true">
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+  </div>
+
+  <div class="anime-hero__masthead">
+    <strong>ZHANG XUN</strong>
+    <span>個人記録 · PERSONAL ARCHIVE</span>
+    <span>ISSUE 01</span>
+  </div>
+
+  <div class="anime-hero__layout">
+    <div class="anime-hero__copy">
+      <p class="eyebrow">AI Agent / Systems / Creative Coding</p>
+      <h1><small>你好，我是</small>{{ $profile.name }}</h1>
+      <p class="anime-hero__role">{{ $profile.role }}</p>
+      <div class="anime-hero__author">
+        <img src="{{ $profile.avatar | relURL }}" alt="{{ $profile.name }} 的头像">
+        <div>
+          <span>AUTHOR</span>
+          <strong>{{ $profile.name }}</strong>
+        </div>
+      </div>
+      <h2>{{ $profile.tagline }}</h2>
+      <p class="anime-hero__intro">记录 AI Agent、大模型应用、编程语言工具链、系统软件与每一次项目实践。</p>
+      <div class="hero-actions">
+        <a class="button primary" href="{{ "posts/" | relURL }}">阅读文章</a>
+        <button class="button ghost" type="button" data-resume-open>查看简历</button>
+      </div>
     </div>
 
-    <div class="template-board__grid">
-      <aside class="template-profile-card">
-        <div class="template-avatar">
-          <img src="{{ $profile.avatar | relURL }}" alt="{{ $profile.name }} 的照片">
-        </div>
-        <div class="template-nameplate">
-          <p>Hello, I am</p>
-          <h1>{{ $profile.name }}</h1>
-          <span>{{ $profile.role }}</span>
-        </div>
-      </aside>
-
-      <div class="template-main-card">
-        <p class="eyebrow">Personal Blog</p>
-        <h2>{{ $profile.tagline }}</h2>
-        <p>记录 AI Agent、大模型应用、编程语言工具链、系统软件和项目复盘。</p>
-        <div class="hero-actions">
-          <a class="button primary" href="{{ "posts/" | relURL }}">看博客</a>
-          <button class="button ghost" type="button" data-resume-open>查看简历</button>
-        </div>
-      </div>
-
-      <div class="template-mini-card template-contact-card">
-        <p class="eyebrow">Contact</p>
-        <a href="mailto:{{ $profile.email }}">{{ $profile.email }}</a>
-      </div>
-
-      <div class="template-mini-card template-skill-card">
+    <aside class="anime-hero__notes">
+      <article>
+        <span class="note-number">01</span>
         <p class="eyebrow">Focus</p>
         <div class="template-tags">
-          {{ range first 5 $profile.highlights }}
-            <span>{{ . }}</span>
-          {{ end }}
+          {{ range first 4 $profile.highlights }}<span>{{ . }}</span>{{ end }}
         </div>
-      </div>
-
-      <div class="template-mini-card template-education-card">
+      </article>
+      <article>
+        <span class="note-number">02</span>
         <p class="eyebrow">Education</p>
         <strong>{{ $profile.education.school }}</strong>
-        <span>{{ $profile.education.major }} · {{ $profile.education.period }}</span>
-      </div>
-    </div>
+        <span>{{ $profile.education.major }}</span>
+      </article>
+      <article>
+        <span class="note-number">03</span>
+        <p class="eyebrow">Contact</p>
+        <a href="mailto:{{ $profile.email }}">{{ $profile.email }}</a>
+      </article>
+    </aside>
   </div>
 </section>

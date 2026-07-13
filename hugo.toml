@@ -10,8 +10,33 @@ title = "张迅 | AI Agent 开发者"
 
 [markup]
   [markup.goldmark]
+    [markup.goldmark.parser]
+      autoHeadingID = true
+      autoHeadingIDType = "github"
+      wrapStandAloneImageWithinParagraph = false
+      [markup.goldmark.parser.attribute]
+        block = true
+        title = true
+    [markup.goldmark.extensions]
+      definitionList = true
+      footnote = true
+      linkify = true
+      strikethrough = true
+      table = true
+      taskList = true
+      typographer = true
     [markup.goldmark.renderer]
       unsafe = true
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNos = false
+    noClasses = false
+    style = "github-dark"
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 2
 
 [outputs]
   home = ["HTML", "RSS"]

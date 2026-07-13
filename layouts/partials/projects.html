@@ -1,20 +1,24 @@
 {{ $profile := site.Data.profile }}
-<section class="section">
-  <div class="section-title">
-    <p class="eyebrow">Projects</p>
-    <h2>项目经历</h2>
-  </div>
+<section class="section editorial-section projects-section">
+  <header class="chapter-heading">
+    <span>03</span>
+    <div>
+      <p class="eyebrow">制作記録 · Projects</p>
+      <h2>项目经历</h2>
+    </div>
+  </header>
   <div class="project-list">
-    {{ range $profile.projects }}
+    {{ range $index, $project := $profile.projects }}
       <article class="project-card">
-        <div>
-          <time>{{ .period }}</time>
-          <h3>{{ .title }}</h3>
-          <p class="project-role">{{ .role }}</p>
-          <p>{{ .summary }}</p>
+        <span class="project-card__index">{{ printf "%02d" (add $index 1) }}</span>
+        <div class="project-card__body">
+          <time>{{ $project.period }}</time>
+          <h3>{{ $project.title }}</h3>
+          <p class="project-role">{{ $project.role }}</p>
+          <p>{{ $project.summary }}</p>
         </div>
         <ul>
-          {{ range .outcomes }}
+          {{ range $project.outcomes }}
             <li>{{ . }}</li>
           {{ end }}
         </ul>

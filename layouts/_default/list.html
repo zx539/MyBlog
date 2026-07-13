@@ -1,6 +1,6 @@
 {{ define "main" }}
-  <section class="section page-heading">
-    <p class="eyebrow">Blog</p>
+  <section class="section page-heading manga-heading">
+    <p class="eyebrow">読みもの · Blog</p>
     <h1>{{ .Title }}</h1>
     {{ with .Description }}<p>{{ . }}</p>{{ end }}
   </section>
@@ -9,9 +9,13 @@
     {{ range .Pages.ByDate.Reverse }}
       <article class="post-card">
         <a href="{{ .RelPermalink }}">
-          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+          <div class="post-card__meta">
+            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+            <span>{{ .ReadingTime }} min</span>
+          </div>
           <h2>{{ .Title }}</h2>
           {{ with .Params.summary }}<p>{{ . }}</p>{{ end }}
+          {{ with .Params.tags }}<div class="post-card__tags">{{ range first 2 . }}<span>#{{ . }}</span>{{ end }}</div>{{ end }}
         </a>
       </article>
     {{ end }}

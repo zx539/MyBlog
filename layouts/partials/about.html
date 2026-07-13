@@ -1,13 +1,17 @@
 {{ $profile := site.Data.profile }}
-<section class="section split-section">
-  <div>
-    <p class="eyebrow">About</p>
-    <h2>把想法做成能跑、能维护、能协作的系统</h2>
-  </div>
-  <div class="text-panel">
-    <p>我关注 AI Agent、大模型应用、编程语言工具链和系统软件。项目里通常承担全栈开发、架构设计、团队组织和核心模块实现。</p>
-    <p>{{ $profile.location }}</p>
-    <div class="contact-row">
+<section class="section editorial-section about-section">
+  <header class="chapter-heading">
+    <span>01</span>
+    <div>
+      <p class="eyebrow">自己紹介 · About</p>
+      <h2>把想法做成能跑、能维护、能协作的系统</h2>
+    </div>
+  </header>
+  <div class="about-copy">
+    <p class="about-copy__lead">我关注 AI Agent、大模型应用、编程语言工具链和系统软件。</p>
+    <p>项目里通常承担全栈开发、架构设计、团队组织和核心模块实现。我喜欢把复杂系统拆成清晰、可靠且能持续演进的模块。</p>
+    <div class="about-copy__meta">
+      <span>{{ $profile.location }}</span>
       <a href="mailto:{{ $profile.email }}">{{ $profile.email }}</a>
     </div>
   </div>
