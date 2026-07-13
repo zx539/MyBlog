@@ -1104,64 +1104,7 @@ h3 {
   line-height: 1.45;
 }
 
-/* Resume and footer */
-
-.resume-dialog {
-  width: min(920px, calc(100% - 28px));
-  max-height: calc(100vh - 28px);
-  padding: 0;
-  color: var(--ink);
-  border: 2px solid var(--line);
-  border-radius: 4px;
-  background: var(--paper);
-  box-shadow: 10px 10px 0 var(--line);
-}
-
-.resume-dialog::backdrop {
-  background: rgba(37, 35, 58, 0.7);
-}
-
-.resume-dialog__chrome {
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  padding: 16px 20px;
-  border-bottom: 2px solid var(--line);
-  background: var(--sakura-soft);
-}
-
-.resume-dialog__chrome h2 {
-  margin: 0;
-  font-family: var(--hand);
-  font-size: 2rem;
-}
-
-.resume-dialog__close {
-  display: grid;
-  width: 42px;
-  height: 42px;
-  place-items: center;
-  border: 2px solid var(--line);
-  border-radius: 50%;
-  background: var(--paper);
-  box-shadow: 3px 3px 0 var(--line);
-  cursor: pointer;
-  font-size: 1.4rem;
-  font-weight: 900;
-}
-
-.resume-dialog__body {
-  max-height: calc(100vh - 120px);
-  overflow: auto;
-}
-
-.resume-dialog__body img:first-child {
-  width: min(180px, 48vw);
-}
+/* Footer */
 
 .site-footer {
   display: flex;

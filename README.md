@@ -4,10 +4,10 @@
 
 - `data/profile.yaml`：首页个人信息、技能、项目经历。
 - `content/posts/`：博客文章，新增 Markdown 文件即可。
-- `content/about.md`、`content/resume.md`：固定页面内容。
+- `content/about.md`：个人介绍页面。
 - `layouts/partials/`：页面模块组件。
 - `assets/css/main.css`：卡通动漫风格样式。
-- `static/images/`、`static/files/`：图片和简历 PDF。
+- `static/images/`：头像、背景图等图片资源。
 
 ## 本地预览
 
@@ -23,8 +23,9 @@ hugo new posts/my-new-post.md
 
 ## GitHub Pages 部署
 
-1. 把 `hugo.toml` 里的 `baseURL` 改成你的 GitHub Pages 地址。
-2. 推送到 GitHub 仓库。
-3. 等待 Actions 生成 `gh-pages` 分支。
-4. 在仓库 `Settings -> Pages` 里选择 `Deploy from a branch`。
-5. 分支选择 `gh-pages`，目录选择 `/ (root)`。
+1. 确认 `hugo.toml` 中的 `baseURL` 为 `https://zx539.github.io/MyBlog/`。
+2. 将修改提交并推送到 GitHub 仓库的 `main` 分支。
+3. 在仓库的 `Actions` 页面等待 `Deploy Hugo site to Pages` 工作流完成。
+4. 首次部署时，进入 `Settings -> Pages`，将 Source 设为 `Deploy from a branch`。
+5. Branch 选择 `gh-pages`，目录选择 `/ (root)`，保存后等待几分钟。
+6. 访问 `https://zx539.github.io/MyBlog/`。
