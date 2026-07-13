@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - master
+      - feature/anime-markdown-ui
   workflow_dispatch:
 
 permissions:
