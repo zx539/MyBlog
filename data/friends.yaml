@@ -10,3 +10,7 @@
   url: https://gohugo.io/
   description: 本站使用的静态网站生成器。
   tag: Site
+- name: ShettyDev Blog
+  url: https://blog.shettydev.com/
+  description: ShettyDev 的个人技术博客。
+  tag: Blog
