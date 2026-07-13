@@ -1,8 +1,14 @@
 {{ define "main" }}
-  {{ partial "hero.html" . }}
-  {{ partial "about.html" . }}
-  {{ partial "skills.html" . }}
-  {{ partial "projects.html" . }}
-  {{ partial "posts.html" . }}
-  {{ partial "friends.html" . }}
+  <div class="sakura-fall" aria-hidden="true">
+    {{ range seq 1 18 }}<i style="--petal-index: {{ . }}"></i>{{ end }}
+  </div>
+  <div class="sakura-dashboard">
+    {{ partial "home-sidebar.html" . }}
+    <div class="sakura-feed">
+      {{ partial "hero.html" . }}
+      {{ partial "posts.html" . }}
+      {{ partial "projects.html" . }}
+    </div>
+    {{ partial "home-rail.html" . }}
+  </div>
 {{ end }}

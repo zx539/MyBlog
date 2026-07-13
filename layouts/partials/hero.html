@@ -1,65 +1,23 @@
 {{ $profile := site.Data.profile }}
-<section class="anime-hero section" aria-label="个人主页首屏">
-  <div class="anime-hero__backdrop" aria-hidden="true">
-    <img src="{{ $profile.hero_art | relURL }}" alt="">
+<section class="sakura-hero" aria-label="风间惟花的个人主页封面">
+  <img class="sakura-hero__image" src="{{ $profile.hero_art | relURL }}" alt="狐狸娘站在樱色天空下眺望远方">
+  <div class="sakura-hero__shade" aria-hidden="true"></div>
+  <div class="sakura-hero__petals" aria-hidden="true">
+    {{ range seq 1 12 }}<i style="--petal-index: {{ . }}"></i>{{ end }}
   </div>
-  <div class="anime-hero__veil" aria-hidden="true"></div>
-  <div class="hero-petals" aria-hidden="true">
-    <i></i>
-    <i></i>
-    <i></i>
-    <i></i>
-    <i></i>
-    <i></i>
-  </div>
-
-  <div class="anime-hero__masthead">
-    <strong>ZHANG XUN</strong>
-    <span>個人記録 · PERSONAL ARCHIVE</span>
-    <span>ISSUE 01</span>
-  </div>
-
-  <div class="anime-hero__layout">
-    <div class="anime-hero__copy">
-      <p class="eyebrow">AI Agent / Systems / Creative Coding</p>
-      <h1><small>你好，我是</small>{{ $profile.name }}</h1>
-      <p class="anime-hero__role">{{ $profile.role }}</p>
-      <div class="anime-hero__author">
-        <img src="{{ $profile.avatar | relURL }}" alt="{{ $profile.name }} 的头像">
-        <div>
-          <span>AUTHOR</span>
-          <strong>{{ $profile.name }}</strong>
-        </div>
-      </div>
-      <h2>{{ $profile.tagline }}</h2>
-      <p class="anime-hero__intro">记录 AI Agent、大模型应用、编程语言工具链、系统软件与每一次项目实践。</p>
-      <div class="hero-actions">
-        <a class="button primary" href="{{ "posts/" | relURL }}">阅读文章</a>
-      </div>
+  <div class="sakura-hero__content">
+    <p>KAZAMA YUIKA · PERSONAL ARCHIVE</p>
+    <h1><small>欢迎来到</small>{{ $profile.name }}的博客</h1>
+    <blockquote>{{ $profile.tagline }}</blockquote>
+    <div class="sakura-hero__identity">
+      <img src="{{ $profile.avatar | relURL }}" alt="{{ $profile.name }}的头像">
+      <span>{{ $profile.role }}</span>
     </div>
-
-    <aside class="anime-hero__notes">
-      <article>
-        <span class="note-number">01</span>
-        <p class="eyebrow">Focus</p>
-        <div class="template-tags">
-          {{ range first 4 $profile.highlights }}<span>{{ . }}</span>{{ end }}
-        </div>
-      </article>
-      <article>
-        <span class="note-number">02</span>
-        <p class="eyebrow">Education</p>
-        <strong>{{ $profile.education.school }}</strong>
-        <span>{{ $profile.education.major }}</span>
-      </article>
-      <article>
-        <span class="note-number">03</span>
-        <p class="eyebrow">Contact</p>
-        <div class="contact-links">
-          <a href="mailto:{{ $profile.email }}">{{ $profile.email }}</a>
-          <span>QQ：{{ $profile.qq }}</span>
-        </div>
-      </article>
-    </aside>
   </div>
+  <footer class="sakura-hero__footer">
+    <div class="sakura-hero__tags">
+      {{ range first 4 $profile.highlights }}<span>{{ . }}</span>{{ end }}
+    </div>
+    <a href="{{ "posts/" | relURL }}">阅读全部文章</a>
+  </footer>
 </section>

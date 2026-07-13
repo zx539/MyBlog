@@ -1,0 +1,42 @@
+{{ $profile := site.Data.profile }}
+{{ $posts := where site.RegularPages "Section" "posts" }}
+<aside class="home-sidebar" aria-label="个人导航">
+  <div class="home-profile">
+    <img src="{{ $profile.avatar | relURL }}" alt="{{ $profile.name }}的头像">
+    <div>
+      <p>風の記録</p>
+      <strong>{{ $profile.name }}</strong>
+      <span>{{ $profile.role }}</span>
+    </div>
+  </div>
+
+  <nav class="home-nav" aria-label="首页导航">
+    <a href="{{ site.Home.RelPermalink }}" aria-current="page"><span>01</span>主页</a>
+    <a href="#posts"><span>02</span>文章</a>
+    <a href="#projects"><span>03</span>项目</a>
+    <a href="#friends"><span>04</span>邻居</a>
+    <a href="#about"><span>05</span>关于</a>
+  </nav>
+
+  <section class="sidebar-section" aria-labelledby="site-stats-title">
+    <h2 id="site-stats-title">站点统计</h2>
+    <div class="site-stats">
+      <span><strong>{{ len $posts }}</strong>文章</span>
+      <span><strong>{{ len $profile.projects }}</strong>项目</span>
+      <span><strong>{{ len $profile.skills }}</strong>技能</span>
+      <span><strong>{{ len site.Data.friends }}</strong>邻居</span>
+    </div>
+  </section>
+
+  <section class="sidebar-section" id="skills" aria-labelledby="skill-tags-title">
+    <h2 id="skill-tags-title">常用标签</h2>
+    <div class="sidebar-tags">
+      {{ range first 9 $profile.skills }}<span>{{ . }}</span>{{ end }}
+    </div>
+  </section>
+
+  <div class="sidebar-contact">
+    <a href="mailto:{{ $profile.email }}">Mail</a>
+    <span>QQ {{ $profile.qq }}</span>
+  </div>
+</aside>

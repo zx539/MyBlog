@@ -1,0 +1,39 @@
+{{ $profile := site.Data.profile }}
+{{ $friends := site.Data.friends }}
+<aside class="home-rail" aria-label="补充信息">
+  <section class="rail-section rail-scene" aria-labelledby="daily-scene-title">
+    <header>
+      <p>今日一景</p>
+      <span>SAKURA · 01</span>
+    </header>
+    <figure>
+      <img src="{{ $profile.hero_art | relURL }}" alt="樱色天空下的狐狸娘">
+      <figcaption>春风有信，花开有期。</figcaption>
+    </figure>
+  </section>
+
+  <section class="rail-section rail-about" id="about" aria-labelledby="about-title">
+    <h2 id="about-title">About Me</h2>
+    <p>{{ $profile.tagline }}</p>
+    <dl>
+      <div><dt>所在地</dt><dd>{{ $profile.location }}</dd></div>
+      <div><dt>专业</dt><dd>{{ $profile.education.major }}</dd></div>
+      <div><dt>邮箱</dt><dd><a href="mailto:{{ $profile.email }}">{{ $profile.email }}</a></dd></div>
+      <div><dt>QQ</dt><dd>{{ $profile.qq }}</dd></div>
+    </dl>
+  </section>
+
+  {{ if $friends }}
+  <section class="rail-section rail-friends" id="friends" aria-labelledby="friend-title">
+    <h2 id="friend-title">友情链接</h2>
+    <div>
+      {{ range $friends }}
+        <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+          <span>{{ .tag }}</span>
+          <strong>{{ .name }}</strong>
+        </a>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+</aside>

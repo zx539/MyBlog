@@ -6,6 +6,7 @@ on:
       - main
       - master
       - feature/anime-markdown-ui
+      - codex/sakura-template-layout
   workflow_dispatch:
 
 permissions:
