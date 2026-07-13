@@ -1,9 +1,11 @@
+{{ $profile := site.Data.profile }}
 <footer class="site-footer">
   <div>
     <strong>{{ site.Params.author }}</strong>
     <p>© {{ now.Format "2006" }} · Built with Hugo</p>
   </div>
   <div class="footer-links">
-    <a href="mailto:{{ site.Params.email }}">邮箱</a>
+    <a href="mailto:{{ $profile.email }}">邮箱</a>
+    <span>QQ：{{ $profile.qq }}</span>
   </div>
 </footer>

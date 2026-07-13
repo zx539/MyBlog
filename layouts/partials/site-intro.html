@@ -1,0 +1,30 @@
+{{ $profile := site.Data.profile }}
+<div class="site-intro" data-site-intro aria-hidden="true">
+  <img src="{{ $profile.hero_art | relURL }}" alt="">
+  <div class="site-intro__panel">
+    <span>ZHANG XUN</span>
+    <strong>個人記録</strong>
+    <i></i>
+    <small>PERSONAL BLOG</small>
+  </div>
+</div>
+<script>
+  (() => {
+    const intro = document.querySelector("[data-site-intro]");
+    let seen = false;
+
+    try {
+      seen = sessionStorage.getItem("blog-intro-seen") === "true";
+      sessionStorage.setItem("blog-intro-seen", "true");
+    } catch (_) {}
+
+    if (seen) {
+      intro.remove();
+      return;
+    }
+
+    intro.addEventListener("animationend", (event) => {
+      if (event.target === intro) intro.remove();
+    });
+  })();
+</script>

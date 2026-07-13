@@ -2,7 +2,9 @@
 <html lang="{{ site.LanguageCode | default "zh-CN" }}">
   {{ partial "head.html" . }}
   <body>
+    {{ if .IsHome }}{{ partial "site-intro.html" . }}{{ end }}
     <div class="page-shell">
+      {{ partial "header.html" . }}
       <main id="main">
         {{ block "main" . }}{{ end }}
       </main>

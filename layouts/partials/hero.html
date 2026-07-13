@@ -55,7 +55,10 @@
       <article>
         <span class="note-number">03</span>
         <p class="eyebrow">Contact</p>
-        <a href="mailto:{{ $profile.email }}">{{ $profile.email }}</a>
+        <div class="contact-links">
+          <a href="mailto:{{ $profile.email }}">{{ $profile.email }}</a>
+          <span>QQ：{{ $profile.qq }}</span>
+        </div>
       </article>
     </aside>
   </div>

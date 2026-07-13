@@ -5,7 +5,6 @@ title = "张迅 | AI Agent 开发者"
 [params]
   description = "张迅的个人博客与作品集，记录 AI Agent、系统软件、编程语言与校园项目实践。"
   author = "张迅"
-  email = "202412724@stu.neuq.edu.cn"
 
 [markup]
   [markup.goldmark]
