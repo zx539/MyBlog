@@ -1,6 +1,6 @@
 {{ $profile := site.Data.profile }}
 <section class="sakura-hero" aria-label="风间惟花的个人主页封面">
-  <img class="sakura-hero__image" src="{{ $profile.hero_art | relURL }}" alt="狐狸娘站在樱色天空下眺望远方">
+  <img class="sakura-hero__image" src="{{ $profile.hero_art | relURL }}" alt="狐狸娘站在樱色天空下眺望远方" width="1672" height="941" fetchpriority="high" decoding="sync">
   <div class="sakura-hero__shade" aria-hidden="true"></div>
   <div class="sakura-hero__petals" aria-hidden="true">
     {{ range seq 1 12 }}<i style="--petal-index: {{ . }}"></i>{{ end }}

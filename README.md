@@ -8,6 +8,8 @@
 - `layouts/partials/`：页面模块组件。
 - `assets/css/main.css`：卡通动漫风格样式。
 - `static/images/`：头像、背景图等图片资源。
+- `data/daily.yaml`、`static/images/daily/`：每日一景配置与独立图片。
+- `docs/CONTENT_API.md`：所有内容模块的字段和更新方法。
 
 ## 本地预览
 

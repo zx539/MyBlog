@@ -1,14 +1,15 @@
 {{ $profile := site.Data.profile }}
 {{ $friends := site.Data.friends }}
+{{ $daily := site.Data.daily }}
 <aside class="home-rail" aria-label="补充信息">
   <section class="rail-section rail-scene" aria-labelledby="daily-scene-title">
     <header>
       <p>今日一景</p>
-      <span>SAKURA · 01</span>
+      <span>{{ $daily.label }}</span>
     </header>
     <figure>
-      <img src="{{ $profile.hero_art | relURL }}" alt="樱色天空下的狐狸娘">
-      <figcaption>春风有信，花开有期。</figcaption>
+      <img src="{{ $daily.image | relURL }}" alt="{{ $daily.alt }}">
+      <figcaption>{{ $daily.caption }}</figcaption>
     </figure>
   </section>
 
@@ -28,7 +29,7 @@
     <h2 id="friend-title">友情链接</h2>
     <div>
       {{ range $friends }}
-        <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+        <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" data-friend-link>
           <span>{{ .tag }}</span>
           <strong>{{ .name }}</strong>
         </a>
@@ -37,3 +38,15 @@
   </section>
   {{ end }}
 </aside>
+<script>
+  (() => {
+    document.querySelectorAll("[data-friend-link]").forEach((link) => {
+      link.addEventListener("click", () => {
+        link.classList.add("is-opening");
+        window.setTimeout(() => {
+          link.classList.remove("is-opening");
+        }, 360);
+      });
+    });
+  })();
+</script>

@@ -3,6 +3,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="{{ .Description | default site.Params.description }}">
   <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
+  {{ if .IsHome }}
+    {{ $profile := site.Data.profile }}
+    <link rel="preload" as="image" href="{{ $profile.hero_art | relURL }}" fetchpriority="high">
+  {{ end }}
   {{ $css := resources.Get "css/main.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">

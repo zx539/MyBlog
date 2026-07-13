@@ -132,108 +132,6 @@ img {
   background: var(--line);
 }
 
-/* First-visit intro */
-
-.site-intro {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  display: grid;
-  overflow: hidden;
-  place-items: center;
-  color: #fffafd;
-  background: #6e365e;
-  pointer-events: none;
-  animation: intro-exit 2.4s cubic-bezier(0.76, 0, 0.24, 1) forwards;
-}
-
-.site-intro::after {
-  position: absolute;
-  inset: 0;
-  content: "";
-  background: rgba(55, 21, 48, 0.46);
-}
-
-.site-intro > img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  animation: intro-image 2.4s ease-out forwards;
-}
-
-.site-intro__panel {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  min-width: min(520px, calc(100% - 44px));
-  justify-items: center;
-  padding: 32px;
-  border: 2px solid rgba(255, 255, 255, 0.82);
-  border-radius: var(--corner);
-  background: rgba(74, 27, 62, 0.28);
-  text-shadow: 0 2px 16px rgba(55, 21, 48, 0.7);
-  backdrop-filter: blur(5px);
-  animation: intro-title 1.8s ease-out both;
-}
-
-.site-intro__panel span,
-.site-intro__panel small {
-  font-size: 0.74rem;
-  font-weight: 900;
-}
-
-.site-intro__panel strong {
-  margin: 7px 0 12px;
-  font-family: var(--display);
-  font-size: clamp(3rem, 10vw, 6.5rem);
-  line-height: 1;
-}
-
-.site-intro__panel i {
-  width: 72px;
-  height: 2px;
-  margin-bottom: 12px;
-  background: #ffd6e8;
-  animation: intro-line 1.2s 0.25s ease-out both;
-}
-
-@keyframes intro-image {
-  from { transform: scale(1.08); }
-  to { transform: scale(1.02); }
-}
-
-@keyframes intro-title {
-  from {
-    opacity: 0;
-    transform: translateY(24px) scale(0.97);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes intro-line {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
-}
-
-@keyframes intro-exit {
-  0%,
-  72% {
-    visibility: visible;
-    opacity: 1;
-    clip-path: inset(0 0 0 0);
-  }
-  100% {
-    visibility: hidden;
-    opacity: 0;
-    clip-path: inset(0 0 100% 0);
-  }
-}
-
 .section,
 .site-footer {
   width: min(1160px, calc(100% - 40px));
@@ -1413,10 +1311,6 @@ h3 {
     font-size: 0.8rem;
   }
 
-  .site-intro__panel {
-    padding: 24px 18px;
-  }
-
   .section,
   .site-footer,
   .article-shell {
@@ -1848,13 +1742,6 @@ h3 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .site-intro {
-    animation: intro-exit 0.01ms forwards;
-  }
-
-  .site-intro > img,
-  .site-intro__panel,
-  .site-intro__panel i,
   .anime-hero__backdrop img,
   .hero-petals i {
     animation: none;
@@ -2033,12 +1920,15 @@ h3 {
 .sidebar-contact {
   display: grid;
   gap: 6px;
-  margin-top: 26px;
-  padding-top: 16px;
-  border-top: 1px solid #d9e8e2;
+  margin: -10px 0 24px;
+  padding: 12px 10px;
+  border: 1px solid #d9e8e2;
+  border-radius: var(--corner);
+  background: #fff6fa;
   color: var(--vermilion);
-  font-size: 0.74rem;
+  font-size: 0.68rem;
   font-weight: 900;
+  overflow-wrap: anywhere;
 }
 
 .sakura-feed {
@@ -2069,7 +1959,7 @@ h3 {
   z-index: -3;
   object-fit: cover;
   object-position: center;
-  animation: sakura-cover-drift 20s ease-in-out infinite alternate;
+  transform: scale(1.02);
 }
 
 .sakura-hero__shade {
@@ -2377,12 +2267,53 @@ h3 {
 }
 
 .rail-friends a {
+  position: relative;
   display: grid;
   grid-template-columns: 50px minmax(0, 1fr);
   align-items: center;
   gap: 8px;
   padding: 10px 0;
   border-top: 1px solid #d9e8e2;
+  transition: color 180ms ease, padding 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.rail-friends a::after {
+  position: absolute;
+  right: 2px;
+  bottom: 5px;
+  left: 2px;
+  height: 2px;
+  content: "";
+  background: var(--sakura);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 220ms ease;
+}
+
+.rail-friends a:hover {
+  padding-inline: 8px;
+  color: var(--vermilion);
+  background: #fff1f7;
+}
+
+.rail-friends a:hover::after {
+  transform: scaleX(1);
+}
+
+.rail-friends a.is-opening {
+  color: #ffffff;
+  background: var(--vermilion);
+  transform: translateX(5px) scale(0.98);
+}
+
+.rail-friends a:active {
+  color: #ffffff;
+  background: var(--vermilion);
+  transform: translateX(5px) scale(0.96);
+}
+
+.rail-friends a.is-opening::after {
+  transform: scaleX(1);
 }
 
 .rail-friends a span {
@@ -2403,11 +2334,6 @@ h3 {
 .home-page .site-footer {
   width: min(1420px, calc(100% - 32px));
   margin-top: 52px;
-}
-
-@keyframes sakura-cover-drift {
-  from { transform: scale(1.02) translate3d(-0.4%, 0, 0); }
-  to { transform: scale(1.08) translate3d(0.8%, -0.5%, 0); }
 }
 
 @keyframes sakura-petal-fall {
@@ -2475,9 +2401,16 @@ h3 {
     display: none;
   }
 
-  .sidebar-section,
-  .sidebar-contact {
+  .sidebar-section {
     display: none;
+  }
+
+  .sidebar-contact {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 6px 16px;
+    margin-bottom: 0;
   }
 
   .sakura-hero__content {
