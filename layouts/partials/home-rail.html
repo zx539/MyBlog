@@ -28,10 +28,14 @@
   <section class="rail-section rail-friends" id="friends" aria-labelledby="friend-title">
     <h2 id="friend-title">友情链接</h2>
     <div>
-      {{ range $friends }}
-        <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" data-friend-link>
-          <span>{{ .tag }}</span>
-          <strong>{{ .name }}</strong>
+      {{ range $friend := $friends }}
+        <a href="{{ $friend.url }}" target="_blank" rel="noopener noreferrer" data-friend-link>
+          {{ with $friend.avatar }}
+            <img class="rail-friend__avatar" src="{{ . | relURL }}" alt="{{ $friend.name }}的头像" width="38" height="38" loading="lazy" decoding="async">
+          {{ else }}
+            <span class="rail-friend__avatar rail-friend__avatar--fallback" aria-hidden="true">{{ substr $friend.name 0 1 }}</span>
+          {{ end }}
+          <span class="rail-friend__copy"><small>{{ $friend.tag }}</small><strong>{{ $friend.name }}</strong></span>
         </a>
       {{ end }}
     </div>

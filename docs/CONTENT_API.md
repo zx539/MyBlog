@@ -188,11 +188,12 @@ draft: false
 
 文件：`data/friends.yaml`
 
-每个链接包含 4 个必填字段：
+每个链接包含 4 个必填字段和 1 个可选头像字段：
 
 ```yaml
 - name: 站点名称
   url: https://example.com/
+  avatar: images/friends/example.webp
   description: 站点简介。
   tag: Blog
 ```
@@ -200,9 +201,10 @@ draft: false
 添加步骤：
 
 1. 在文件末尾追加上述对象。
-2. `url` 必须包含 `https://`。
-3. `tag` 建议使用 `Blog`、`Code`、`Site` 或 `Campus`。
-4. 首页右栏按 YAML 顺序展示。
+2. 好友头像放入 `static/images/friends/`，`avatar` 填写不含 `static/` 的相对路径；未填写时显示名称首字。
+3. `url` 必须包含 `https://`。
+4. `tag` 建议使用 `Blog`、`Code`、`Site` 或 `Campus`。
+5. 首页右栏按 YAML 顺序展示。
 
 点击时会立即播放 360ms 反馈动画，并按浏览器原生方式在新标签页打开；`Ctrl/Cmd + 点击` 等组合操作也保持原生行为。
 

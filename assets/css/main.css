@@ -794,6 +794,31 @@ h3 {
   font-weight: 600;
 }
 
+.friend-card__avatar {
+  width: 56px;
+  height: 56px;
+  border: 2px solid #d6538d;
+  border-radius: 50%;
+  background: #ffe7f1;
+  box-shadow: 0 0 0 4px rgba(255, 190, 218, 0.36);
+  object-fit: cover;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.friend-card:hover .friend-card__avatar {
+  box-shadow: 0 0 0 5px rgba(113, 172, 152, 0.28);
+  transform: rotate(3deg) scale(1.04);
+}
+
+.friend-card__avatar--fallback,
+.rail-friend__avatar--fallback {
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  background: #c94e84;
+  font-weight: 900;
+}
+
 .friend-card__tag {
   width: fit-content;
   padding: 4px 8px;
@@ -3225,7 +3250,7 @@ body,
 .rail-friends a {
   position: relative;
   display: grid;
-  grid-template-columns: 50px minmax(0, 1fr);
+  grid-template-columns: 42px minmax(0, 1fr);
   align-items: center;
   gap: 8px;
   padding: 10px 0;
@@ -3272,17 +3297,34 @@ body,
   transform: scaleX(1);
 }
 
-.rail-friends a span {
+.rail-friend__avatar {
+  width: 38px;
+  height: 38px;
+  border: 1px solid #d486a8;
+  border-radius: 50%;
+  background: #ffe7f1;
+  object-fit: cover;
+  transition: transform 180ms ease;
+}
+
+.rail-friends a:hover .rail-friend__avatar {
+  transform: rotate(-4deg) scale(1.06);
+}
+
+.rail-friend__copy {
+  display: grid;
+  min-width: 0;
+  gap: 2px;
+}
+
+.rail-friends .rail-friend__copy small {
   width: fit-content;
-  padding: 3px 5px;
-  border: 1px solid #bcd7cc;
-  border-radius: var(--corner);
   color: #4f806d;
   font-size: 0.58rem;
   font-weight: 900;
 }
 
-.rail-friends a strong {
+.rail-friends .rail-friend__copy strong {
   overflow-wrap: anywhere;
   font-size: 0.74rem;
 }
