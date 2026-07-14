@@ -122,15 +122,16 @@ img {
   font-weight: 900;
 }
 
-.brand-mark {
-  display: grid;
-  width: 36px;
-  height: 36px;
-  place-items: center;
-  border: 2px solid var(--line);
-  border-radius: var(--corner);
-  color: var(--paper);
-  background: var(--vermilion);
+.brand-avatar {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  border: 2px solid #d6538d;
+  border-radius: 50%;
+  background: #ffe5f0;
+  box-shadow: 0 0 0 3px rgba(255, 180, 211, 0.42);
+  object-fit: cover;
+  object-position: center;
 }
 
 .site-nav {
