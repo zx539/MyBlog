@@ -6,15 +6,16 @@
 
 | 功能 | 数据或内容 | 图片目录 | 渲染模板 |
 | --- | --- | --- | --- |
-| 个人信息 | `data/profile.yaml` | `static/images/` | `home-sidebar.html`、`hero.html`、`home-rail.html`、`footer.html` |
+| 个人信息 | `data/profile.yaml` | `static/images/` | `header.html`、`home-sidebar.html`、`hero.html`、`home-rail.html`、`footer.html` |
 | 每日一景 | `data/daily.yaml` | `static/images/daily/` | `home-rail.html` |
 | 博客文章 | `content/posts/*.md` | `static/images/posts/` | `posts.html`、`list.html`、`single.html` |
 | 项目经历 | `data/profile.yaml` 的 `projects` | 可选 `static/images/projects/` | `projects.html` |
 | 技能标签 | `data/profile.yaml` 的 `skills` | 无 | `home-sidebar.html`、`skills.html` |
-| 友情链接 | `data/friends.yaml` | 无 | `home-rail.html`、`friends.html` |
+| 友情链接 | `data/friends.yaml` | `static/images/friends/` | `home-rail.html`、`friends.html` |
 | 关于页面 | `content/about.md` | 可选 `static/images/about/` | `single.html` |
 | 首页导航顺序 | `layouts/partials/home-sidebar.html` | 无 | `home-sidebar.html` |
-| 全局视频背景 | 无 | `static/media/background.mp4` | `ambient-video.html` |
+| 浏览器图标 | 无 | `static/images/favicon.png`、`static/images/apple-touch-icon.png` | `head.html` |
+| 视频背景 | 无 | `static/media/background.mp4` | `ambient-video.html` |
 
 所有静态资源路径都相对于 `static/`。例如配置中的 `images/profile.jpg` 对应磁盘文件 `static/images/profile.jpg`。
 
@@ -44,7 +45,7 @@ template: images/template.jpg
 | `location` | 是 | 右栏所在地 | 直接修改字符串 |
 | `email` | 是 | 左栏、右栏和底栏邮箱链接 | 填写完整邮箱，不要添加 `mailto:` |
 | `qq` | 是 | 左栏、右栏和底栏 QQ | 必须加引号，防止被 YAML 当数字处理 |
-| `avatar` | 是 | 头像 | 图片放进 `static/images/` 后填写相对路径 |
+| `avatar` | 是 | 导航栏、首页和浏览器图标的头像来源 | 图片放进 `static/images/` 后填写相对路径；更换后同步重新生成 favicon |
 | `hero_art` | 是 | 首页狐狸娘背景 | 建议使用 16:9、宽度至少 1600px 的图片 |
 | `template` | 否 | 设计参考图路径 | 不直接显示在页面中 |
 
@@ -173,6 +174,18 @@ draft: false
 
 首页文章按日期倒序显示前 3 篇。全部文章位于 `/posts/`。
 
+### Markdown 渲染能力
+
+Goldmark 已启用标题 ID、表格、任务列表、定义列表、脚注、删除线、链接识别和排版替换。正文样式覆盖：
+
+- `h2` 到 `h6` 标题与标题锚点；
+- 普通、嵌套、有序和任务列表；
+- 引用、行内代码、代码高亮和复制按钮；
+- 横向溢出表格及细滚动条；
+- 图片、说明文字、脚注、分隔线和键帽。
+
+列表项中包含段落时，模板会压缩段落间距；任务列表会隐藏普通花瓣标记，避免重复占位。Markdown 组件使用 `6px` 或 `8px` 圆角，不受全站 `--corner: 2px` 限制。
+
 ### 在文章中添加图片
 
 1. 图片放入 `static/images/posts/`。
@@ -205,6 +218,8 @@ draft: false
 3. `url` 必须包含 `https://`。
 4. `tag` 建议使用 `Blog`、`Code`、`Site` 或 `Campus`。
 5. 首页右栏按 YAML 顺序展示。
+
+建议将头像转换为 `96x96 WebP`，页面显示时固定裁剪为圆形。头像加载失败或未填写时，模板显示名称首字作为占位，不会破坏列表布局。
 
 点击时会立即播放 360ms 反馈动画，并按浏览器原生方式在新标签页打开；`Ctrl/Cmd + 点击` 等组合操作也保持原生行为。
 
@@ -247,11 +262,11 @@ draft: false
 }
 ```
 
-修改颜色优先调整变量，不要逐个替换组件颜色。所有方框使用 `--corner` 作为圆角。首页模板样式位于 `/* Sakura dashboard home */` 注释之后。
+修改颜色优先调整变量，不要逐个替换组件颜色。全站普通方框使用 `--corner`；Markdown 阅读组件单独使用 `--markdown-radius` 和 `--markdown-radius-small`。首页模板样式位于 `/* Sakura dashboard home */` 注释之后。
 
 首页遮罩动画由 `layouts/partials/site-intro.html` 提供，对应样式名称为 `.sakura-intro`。全页和封面樱花数量分别在 `layouts/index.html` 与 `layouts/partials/hero.html` 的 `seq` 数值中调整。动画必须同步保留 `prefers-reduced-motion` 规则。
 
-全局视频背景位于 `static/media/background.mp4`，模板为 `layouts/partials/ambient-video.html`。替换时保持文件名不变即可；建议使用 H.264 编码、MP4 容器、无音轨或静音内容，文件尽量控制在 5MB 内。页面工具位于 `layouts/partials/site-tools.html`，包含阅读进度、背景播放控制、返回顶部、本地时间和代码复制。
+视频背景位于 `static/media/background.mp4`，模板为 `layouts/partials/ambient-video.html`。首页自动播放；文章和其他内页默认只加载静态 poster，用户点击播放按钮后才加载视频，以减少滚动卡顿。替换时保持文件名不变；建议使用 H.264 编码、MP4 容器、无音轨或静音内容，文件尽量控制在 5MB 内。页面工具位于 `layouts/partials/site-tools.html`，包含阅读进度、背景播放控制、返回顶部、本地时间和代码复制；滚动更新通过 `requestAnimationFrame` 合并。
 
 ## 8. 本地验证接口
 
@@ -270,7 +285,7 @@ hugo --gc --minify --cleanDestinationDir --panicOnWarning
 常见问题：
 
 - 图片不显示：检查文件是否位于 `static/`，配置路径不要写 `static/` 前缀。
-- GitHub Pages 路径错误：内部链接和模板图片应使用 `relURL`，Markdown 图片由渲染模板处理。
+- GitHub Pages 路径错误：确认仓库名为 `zx539.github.io`，`baseURL` 为根域；内部链接和模板图片应使用 `relURL`，Markdown 图片由渲染模板处理。
 - 新文章不显示：检查 `draft` 是否为 `true`，日期是否有效，文件是否在 `content/posts/`。
 - YAML 构建失败：检查缩进；数组项使用两个空格缩进并以 `-` 开头。
 
