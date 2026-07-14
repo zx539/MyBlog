@@ -3678,15 +3678,44 @@ body.inner-page {
   padding-left: 1.65em;
 }
 
-.article-body li > ul,
-.article-body li > ol {
-  margin-block: 0.5em;
+.article-body ul {
+  padding-left: 0;
+  list-style: none;
 }
 
-.article-body ul li::marker {
-  color: #e45791;
-  content: "✦  ";
-  font-size: 0.72em;
+.article-body ul > li {
+  position: relative;
+  padding-left: 1.45em;
+}
+
+.article-body ul > li::before {
+  position: absolute;
+  top: 0.78em;
+  left: 0.2em;
+  width: 7px;
+  height: 7px;
+  border: 1px solid #d94c88;
+  border-radius: 50% 50% 50% 2px;
+  background: #ffd1e4;
+  content: "";
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+.article-body li > ul,
+.article-body li > ol {
+  margin-block: 0.4em 0.2em;
+}
+
+.article-body li > p {
+  margin-block: 0.35em;
+}
+
+.article-body li > p:first-child {
+  margin-top: 0;
+}
+
+.article-body li > p:last-child {
+  margin-bottom: 0;
 }
 
 .article-body ol li::marker {
@@ -3836,6 +3865,24 @@ body.inner-page {
 
 .article-body input[type="checkbox"] {
   accent-color: #d94c88;
+}
+
+.article-body .task-list-item {
+  padding-left: 1.75em;
+}
+
+.article-body .task-list-item::before,
+.article-body ul > li:has(> input[type="checkbox"])::before {
+  display: none;
+}
+
+.article-body ul > li:has(> input[type="checkbox"]) {
+  padding-left: 1.75em;
+}
+
+.article-body .task-list-item > input[type="checkbox"],
+.article-body ul > li > input[type="checkbox"] {
+  margin-left: -1.65em;
 }
 
 .article-body .footnotes {

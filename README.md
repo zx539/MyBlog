@@ -25,9 +25,9 @@ hugo new posts/my-new-post.md
 
 ## GitHub Pages 部署
 
-1. 确认 `hugo.toml` 中的 `baseURL` 为 `https://zx539.github.io/MyBlog/`。
-2. 将修改提交并推送到 GitHub 仓库的 `main` 分支。
+1. 将 GitHub 仓库命名为 `zx539.github.io`，这是用户主页使用根域名的必要条件。
+2. 确认 `hugo.toml` 中的 `baseURL` 为 `https://zx539.github.io/`，再将修改推送到发布分支。
 3. 在仓库的 `Actions` 页面等待 `Deploy Hugo site to Pages` 工作流完成。
 4. 首次部署时，进入 `Settings -> Pages`，将 Source 设为 `Deploy from a branch`。
 5. Branch 选择 `gh-pages`，目录选择 `/ (root)`，保存后等待几分钟。
-6. 访问 `https://zx539.github.io/MyBlog/`。
+6. 访问 `https://zx539.github.io/`。

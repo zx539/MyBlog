@@ -182,7 +182,7 @@ draft: false
 ![图片说明](/images/posts/example.jpg "可选图片标题")
 ```
 
-部署在项目子路径时，本站的 Hugo 渲染模板会自动补全 `/MyBlog/` 前缀。
+本站部署在用户主页根路径，Hugo 渲染模板会根据 `baseURL` 自动生成 `/images/...` 路径。
 
 ## 5. 友情链接接口
 
@@ -282,6 +282,6 @@ hugo --gc --minify --cleanDestinationDir --panicOnWarning
 2. GitHub Actions 执行 Hugo 生产构建。
 3. 构建结果发布到 `gh-pages` 分支。
 4. GitHub `Settings -> Pages` 保持 `Deploy from a branch`、`gh-pages`、`/ (root)`。
-5. 等待部署完成后访问 `https://zx539.github.io/MyBlog/`。
+5. 仓库名必须为 `zx539.github.io`，等待部署完成后访问 `https://zx539.github.io/`。
 
 不要手工修改 `public/`，它是构建产物并已被 `.gitignore` 忽略。
