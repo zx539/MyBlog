@@ -3527,6 +3527,11 @@ body.inner-page {
 
 /* Lightweight reading surface and kawaii Markdown */
 
+.article--reading {
+  --markdown-radius: 8px;
+  --markdown-radius-small: 6px;
+}
+
 .inner-page .ambient-video video {
   filter: none;
 }
@@ -3556,6 +3561,7 @@ body.inner-page {
 .article--reading {
   overflow: hidden;
   border-color: rgba(112, 58, 91, 0.34);
+  border-radius: var(--markdown-radius);
   background: #fffdfd;
   box-shadow: 7px 8px 0 rgba(123, 54, 96, 0.1);
 }
@@ -3631,6 +3637,7 @@ body.inner-page {
   margin-top: 2.2em;
   padding: 8px 12px;
   border-left: 4px solid #71ac98;
+  border-radius: var(--markdown-radius-small);
   background: #f2faf6;
   font-size: 1.3rem;
 }
@@ -3689,6 +3696,7 @@ body.inner-page {
 .article-body dl {
   padding: 18px 20px;
   border-left: 4px solid #71ac98;
+  border-radius: var(--markdown-radius);
   background: #f4faf7;
 }
 
@@ -3720,6 +3728,7 @@ body.inner-page {
   padding: 22px 26px 22px 48px;
   border: 1px solid #efb4ce;
   border-left: 5px solid #e45791;
+  border-radius: var(--markdown-radius);
   background: #fff4f8;
   box-shadow: 4px 4px 0 #f6d9e6;
 }
@@ -3735,13 +3744,19 @@ body.inner-page {
 
 .article-body code {
   border-color: #efbfd3;
+  border-radius: var(--markdown-radius-small);
   color: #a52f63;
   background: #fff1f7;
+}
+
+.article-body kbd {
+  border-radius: var(--markdown-radius-small);
 }
 
 .article-body pre {
   border: 1px solid #473547;
   border-left: 5px solid #e778aa;
+  border-radius: var(--markdown-radius);
   background: #2d2631;
   box-shadow: 5px 5px 0 #efd5e1;
 }
@@ -3750,13 +3765,19 @@ body.inner-page {
   background: #2d2631;
 }
 
+.article-body .highlight {
+  border-radius: var(--markdown-radius);
+}
+
 .code-copy {
   border-color: rgba(255, 203, 226, 0.38);
+  border-radius: var(--markdown-radius-small);
   background: rgba(74, 49, 70, 0.92);
 }
 
 .article-body table {
   border-color: #e3a9c2;
+  border-radius: var(--markdown-radius);
   background: #fffdfd;
   box-shadow: 4px 4px 0 #f5dce7;
 }
@@ -3781,12 +3802,14 @@ body.inner-page {
 
 .article-body .md-figure {
   border-color: #e7b3ca;
+  border-radius: var(--markdown-radius);
   background: #fff7fa;
   box-shadow: 5px 5px 0 #f2d7e3;
 }
 
 .article-body img {
   border-color: #b95e87;
+  border-radius: var(--markdown-radius-small);
   box-shadow: none;
 }
 
@@ -3815,6 +3838,7 @@ body.inner-page {
 }
 
 .article-body .footnotes {
+  border-radius: var(--markdown-radius);
   border-top: 1px dashed #dc9bb7;
   background: #fff8fb;
 }
@@ -3822,6 +3846,7 @@ body.inner-page {
 .article-toc {
   border: 1px solid #b9dacd;
   border-left: 5px solid #71ac98;
+  border-radius: var(--markdown-radius);
   background: #f1faf6;
   box-shadow: 4px 4px 0 rgba(113, 172, 152, 0.16);
 }
@@ -3834,6 +3859,58 @@ body.inner-page {
 
 .article-toc a {
   border-bottom: 0;
+}
+
+.article-body pre,
+.article-body table,
+.article-body .highlight {
+  scrollbar-color: #cf5f91 #3b303d;
+  scrollbar-width: thin;
+}
+
+.article-body table {
+  scrollbar-color: #d85f94 #fff0f6;
+}
+
+.article-body pre::-webkit-scrollbar,
+.article-body table::-webkit-scrollbar,
+.article-body .highlight::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.article-body pre::-webkit-scrollbar-track,
+.article-body .highlight::-webkit-scrollbar-track {
+  border-radius: 999px;
+  background: #3b303d;
+}
+
+.article-body table::-webkit-scrollbar-track {
+  border-radius: 999px;
+  background: #fff0f6;
+}
+
+.article-body pre::-webkit-scrollbar-thumb,
+.article-body .highlight::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: linear-gradient(90deg, #e778aa, #a94371);
+}
+
+.article-body table::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ec8bb5, #c94e84);
+}
+
+.article-body pre::-webkit-scrollbar-thumb:hover,
+.article-body table::-webkit-scrollbar-thumb:hover,
+.article-body .highlight::-webkit-scrollbar-thumb:hover {
+  background: #a94371;
+}
+
+.article-body pre::-webkit-scrollbar-corner,
+.article-body table::-webkit-scrollbar-corner,
+.article-body .highlight::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
 @media (max-width: 760px) {
