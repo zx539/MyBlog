@@ -2,6 +2,7 @@
 {{- $external := or (strings.HasPrefix $destination "http://") (strings.HasPrefix $destination "https://") -}}
 {{- $special := or (strings.HasPrefix $destination "#") (strings.HasPrefix $destination "mailto:") -}}
 {{- if and (not $external) (not $special) -}}
+  {{- $destination = strings.TrimPrefix "/" $destination -}}
   {{- $destination = $destination | relURL -}}
 {{- end -}}
 <a href="{{ $destination | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if $external }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .Text | safeHTML }}</a>

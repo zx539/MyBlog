@@ -2,6 +2,7 @@
 <html lang="{{ site.LanguageCode | default "zh-CN" }}">
   {{ partial "head.html" . }}
   <body class="{{ if .IsHome }}home-page{{ else }}inner-page{{ end }}">
+    {{ partial "ambient-video.html" . }}
     {{ if .IsHome }}{{ partial "site-intro.html" . }}{{ end }}
     <div class="page-shell">
       {{ partial "header.html" . }}
@@ -10,5 +11,6 @@
       </main>
       {{ partial "footer.html" . }}
     </div>
+    {{ partial "site-tools.html" . }}
   </body>
 </html>

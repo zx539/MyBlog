@@ -1,6 +1,7 @@
 {{- $destination := .Destination -}}
 {{- $external := or (strings.HasPrefix $destination "http://") (strings.HasPrefix $destination "https://") -}}
 {{- if not $external -}}
+  {{- $destination = strings.TrimPrefix "/" $destination -}}
   {{- $destination = $destination | relURL -}}
 {{- end -}}
 <figure class="md-figure">

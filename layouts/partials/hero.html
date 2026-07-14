@@ -1,5 +1,5 @@
 {{ $profile := site.Data.profile }}
-<section class="sakura-hero" aria-label="风间惟花的个人主页封面">
+<section class="sakura-hero" aria-label="风间惟花的个人主页封面" data-ripple-surface>
   <img class="sakura-hero__image" src="{{ $profile.hero_art | relURL }}" alt="狐狸娘站在樱色天空下眺望远方" width="1672" height="941" fetchpriority="high" decoding="sync">
   <div class="sakura-hero__shade" aria-hidden="true"></div>
   <div class="sakura-hero__petals" aria-hidden="true">
@@ -21,3 +21,28 @@
     <a href="{{ "posts/" | relURL }}">阅读全部文章</a>
   </footer>
 </section>
+<script>
+  (() => {
+    const surface = document.querySelector("[data-ripple-surface]");
+    if (!surface || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let lastRipple = 0;
+    const addRipple = (clientX, clientY) => {
+      const now = performance.now();
+      if (now - lastRipple < 90) return;
+      lastRipple = now;
+
+      const rect = surface.getBoundingClientRect();
+      if (clientY - rect.top > rect.height - 74) return;
+      const ripple = document.createElement("span");
+      ripple.className = "water-ripple";
+      ripple.style.left = `${clientX - rect.left}px`;
+      ripple.style.top = `${clientY - rect.top}px`;
+      surface.appendChild(ripple);
+      ripple.addEventListener("animationend", () => ripple.remove(), { once: true });
+    };
+
+    surface.addEventListener("pointermove", (event) => addRipple(event.clientX, event.clientY));
+    surface.addEventListener("pointerdown", (event) => addRipple(event.clientX, event.clientY));
+  })();
+</script>

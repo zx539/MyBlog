@@ -11,7 +11,7 @@
       {{ end }}
     </div>
 
-    <article class="article">
+    <article class="article article--reading">
       <header class="article-header">
         <p class="eyebrow">{{ if eq .Section "posts" }}読みもの · Writing{{ else }}{{ .Section | default "Page" }}{{ end }}</p>
         <h1>{{ .Title }}</h1>

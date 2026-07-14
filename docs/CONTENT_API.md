@@ -14,6 +14,7 @@
 | 友情链接 | `data/friends.yaml` | 无 | `home-rail.html`、`friends.html` |
 | 关于页面 | `content/about.md` | 可选 `static/images/about/` | `single.html` |
 | 首页导航顺序 | `layouts/partials/home-sidebar.html` | 无 | `home-sidebar.html` |
+| 全局视频背景 | 无 | `static/media/background.mp4` | `ambient-video.html` |
 
 所有静态资源路径都相对于 `static/`。例如配置中的 `images/profile.jpg` 对应磁盘文件 `static/images/profile.jpg`。
 
@@ -247,6 +248,8 @@ draft: false
 修改颜色优先调整变量，不要逐个替换组件颜色。所有方框使用 `--corner` 作为圆角。首页模板样式位于 `/* Sakura dashboard home */` 注释之后。
 
 首页遮罩动画由 `layouts/partials/site-intro.html` 提供，对应样式名称为 `.sakura-intro`。全页和封面樱花数量分别在 `layouts/index.html` 与 `layouts/partials/hero.html` 的 `seq` 数值中调整。动画必须同步保留 `prefers-reduced-motion` 规则。
+
+全局视频背景位于 `static/media/background.mp4`，模板为 `layouts/partials/ambient-video.html`。替换时保持文件名不变即可；建议使用 H.264 编码、MP4 容器、无音轨或静音内容，文件尽量控制在 5MB 内。页面工具位于 `layouts/partials/site-tools.html`，包含阅读进度、背景播放控制、返回顶部、本地时间和代码复制。
 
 ## 8. 本地验证接口
 
