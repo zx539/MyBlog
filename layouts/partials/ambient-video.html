@@ -1,6 +1,6 @@
 {{ $profile := site.Data.profile }}
 <div class="ambient-video" aria-hidden="true">
-  <video data-ambient-video autoplay muted loop playsinline preload="metadata" poster="{{ $profile.hero_art | relURL }}">
+  <video data-ambient-video muted loop playsinline {{ if .IsHome }}autoplay preload="metadata"{{ else }}preload="none"{{ end }} poster="{{ $profile.hero_art | relURL }}">
     <source src="{{ "media/background.mp4" | relURL }}" type="video/mp4">
   </video>
   <div class="ambient-video__veil"></div>

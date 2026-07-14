@@ -12,12 +12,19 @@
     const videoButton = document.querySelector("[data-video-toggle]");
     const video = document.querySelector("[data-ambient-video]");
     const clock = document.querySelector("[data-site-clock]");
+    let scrollFrame = 0;
 
     const updateScroll = () => {
       const max = root.scrollHeight - innerHeight;
       const value = max > 0 ? scrollY / max : 0;
       progress.style.transform = `scaleX(${Math.min(1, Math.max(0, value))})`;
       scrollTopButton.classList.toggle("is-visible", scrollY > 360);
+      scrollFrame = 0;
+    };
+
+    const requestScrollUpdate = () => {
+      if (scrollFrame) return;
+      scrollFrame = requestAnimationFrame(updateScroll);
     };
 
     const updateClock = () => {
@@ -66,8 +73,8 @@
       pre.appendChild(button);
     });
 
-    addEventListener("scroll", updateScroll, { passive: true });
-    addEventListener("resize", updateScroll);
+    addEventListener("scroll", requestScrollUpdate, { passive: true });
+    addEventListener("resize", requestScrollUpdate);
     updateScroll();
     updateClock();
     syncVideoButton();
