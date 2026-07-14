@@ -8,7 +8,7 @@ draft: false
 
 这次博客改造不只是换了一套界面。我把个人资料、项目、技能、友情链接、每日图片、文章、视频背景和部署流程拆成了独立模块，并把过程中遇到的问题整理成一个可以复用的 Codex Skill：`hugo-personal-blog`。
 
-[下载 hugo-personal-blog Skill](/files/hugo-personal-blog-skill.zip)
+[在 GitHub 查看并下载 hugo-personal-blog Skill](https://github.com/zx539/hugo-personal-blog)
 
 ## 为什么要把博客做成 Skill
 
@@ -92,7 +92,7 @@ hugo --gc --minify --cleanDestinationDir --panicOnWarning
 
 ## Skill 的使用方式
 
-将下载后的目录解压到 `$CODEX_HOME/skills/hugo-personal-blog/`，然后在 Codex 中使用：
+从独立的 [zx539/hugo-personal-blog](https://github.com/zx539/hugo-personal-blog) 仓库下载 Skill，将其放到 `$CODEX_HOME/skills/hugo-personal-blog/`，然后在 Codex 中使用：
 
 ```text
 使用 $hugo-personal-blog 帮我创建一个可部署到 GitHub Pages 的模块化个人博客。
@@ -107,7 +107,7 @@ hugo --gc --minify --cleanDestinationDir --panicOnWarning
 Skill 内置检查脚本：
 
 ```bash
-bash skills/hugo-personal-blog/scripts/check_hugo_blog.sh .
+bash "$CODEX_HOME/skills/hugo-personal-blog/scripts/check_hugo_blog.sh" /path/to/your/hugo-blog
 ```
 
 它会执行 Hugo 严格构建，并检查生成页面中是否还存在会破坏 GitHub Pages 项目路径的链接。
