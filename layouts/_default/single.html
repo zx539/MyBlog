@@ -1,5 +1,6 @@
 {{ define "main" }}
-  <div class="article-shell section">
+  {{ $showToc := and (eq .Section "posts") (gt .WordCount 180) }}
+  <div class="article-shell section{{ if $showToc }} article-shell--with-toc{{ end }}">
     <div class="article-toolbar">
       <a class="back-link back-link--surface" href="{{ cond (eq .Section "posts") ("posts/" | relURL) (site.Home.RelPermalink) }}">← 返回{{ if eq .Section "posts" }}文章列表{{ else }}首页{{ end }}</a>
       {{ if eq .Section "posts" }}
@@ -11,7 +12,7 @@
       {{ end }}
     </div>
 
-    <article class="article article--reading">
+    <article class="article article--reading{{ if $showToc }} article--with-toc{{ end }}">
       <header class="article-header">
         <p class="eyebrow">{{ if eq .Section "posts" }}読みもの · Writing{{ else }}{{ .Section | default "Page" }}{{ end }}</p>
         <h1>{{ .Title }}</h1>
@@ -25,20 +26,22 @@
         {{ end }}
         {{ with .Params.tags }}
           <div class="article-tags" aria-label="文章标签">
-            {{ range . }}<span># {{ . }}</span>{{ end }}
+            {{ range . }}<a href="{{ printf "tags/%s/" (. | urlize) | relURL }}"># {{ . }}</a>{{ end }}
           </div>
         {{ end }}
       </header>
 
-      {{ if and (eq .Section "posts") (gt .WordCount 180) }}
-        <aside class="article-toc" aria-label="文章目录">
-          <p>目次 · 目录</p>
-          {{ .TableOfContents }}
-        </aside>
-      {{ end }}
+      <div class="article-reading-grid">
+        <div class="article-body">
+          {{ .Content }}
+        </div>
 
-      <div class="article-body">
-        {{ .Content }}
+        {{ if $showToc }}
+          <aside class="article-toc" aria-label="文章目录">
+            <p>目次 · 目录</p>
+            {{ .TableOfContents }}
+          </aside>
+        {{ end }}
       </div>
 
       {{ if eq .Section "posts" }}

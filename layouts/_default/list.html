@@ -27,7 +27,11 @@
           </div>
           <h2><a href="{{ $post.RelPermalink }}">{{ $post.Title }}</a></h2>
           {{ with $post.Params.summary }}<div class="archive-entry__summary">{{ . | markdownify }}</div>{{ end }}
-          {{ with $post.Params.tags }}<div class="archive-entry__tags">{{ range . }}<span>#{{ . }}</span>{{ end }}</div>{{ end }}
+          {{ with $post.Params.tags }}
+            <div class="archive-entry__tags" aria-label="文章标签">
+              {{ range . }}<a href="{{ printf "tags/%s/" (. | urlize) | relURL }}">#{{ . }}</a>{{ end }}
+            </div>
+          {{ end }}
         </div>
         <a class="archive-entry__link" href="{{ $post.RelPermalink }}">阅读全文 <span>→</span></a>
       </article>
